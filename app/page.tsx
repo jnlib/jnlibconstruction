@@ -6,8 +6,8 @@ const SUPERVISOR_TEL = "02-721-0703";
 const MAIN_TEL = "02-721-0700";
 const ACRC_TEL = "1398";
 
-// TODO: 사용자에게 받는 즉시 교체
-const NAVER_FORM_URL = "https://naver.me/REPLACE_WITH_REAL_URL";
+const NAVER_FORM_INTEGRITY = "https://naver.me/54KQ7DFY";
+const NAVER_FORM_COMPLAINT = "https://naver.me/xfbJEHWM";
 
 export default function Page() {
   return (
@@ -82,22 +82,44 @@ export default function Page() {
               어떤 제보도 비밀이 보장됩니다.
             </p>
 
-            <a
-              href={NAVER_FORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group mt-5 flex items-center justify-between rounded-2xl bg-[#0a1628] px-5 py-4 text-white shadow-[0_10px_30px_-10px_rgba(10,22,40,0.5)] active:scale-[0.98] transition"
-            >
-              <div>
-                <div className="text-[11px] font-medium text-slate-400">
-                  네이버 폼 (익명)
+            <div className="mt-5 space-y-2">
+              <a
+                href={NAVER_FORM_INTEGRITY}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between rounded-2xl bg-[#0a1628] px-5 py-4 text-white shadow-[0_10px_30px_-10px_rgba(10,22,40,0.5)] active:scale-[0.98] transition"
+              >
+                <div>
+                  <div className="text-[11px] font-medium text-slate-400">
+                    네이버 폼 (익명)
+                  </div>
+                  <div className="text-base font-bold">
+                    🛡️ 청렴신고 바로가기
+                  </div>
                 </div>
-                <div className="text-base font-bold">청렴신고 바로가기</div>
-              </div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20 group-active:translate-x-0.5 transition">
-                <ArrowIcon />
-              </div>
-            </a>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20 group-active:translate-x-0.5 transition">
+                  <ArrowIcon />
+                </div>
+              </a>
+              <a
+                href={NAVER_FORM_COMPLAINT}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between rounded-2xl bg-white px-5 py-4 text-[#0a1628] ring-1 ring-slate-200 active:scale-[0.98] transition"
+              >
+                <div>
+                  <div className="text-[11px] font-medium text-slate-500">
+                    네이버 폼
+                  </div>
+                  <div className="text-base font-bold">
+                    🚧 공사 불편사항 신고
+                  </div>
+                </div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 group-active:translate-x-0.5 transition">
+                  <ArrowIcon />
+                </div>
+              </a>
+            </div>
 
             <div className="mt-3 grid grid-cols-2 gap-2">
               <a
@@ -291,11 +313,18 @@ export default function Page() {
             tone="rose"
           />
           <ChannelCard
-            icon="📝"
-            title="청렴신고 폼 (네이버)"
-            sub="익명 온라인 제보"
-            href={NAVER_FORM_URL}
+            icon="🛡️"
+            title="청렴신고 폼"
+            sub="익명 부패·비리 온라인 제보"
+            href={NAVER_FORM_INTEGRITY}
             tone="dark"
+          />
+          <ChannelCard
+            icon="🚧"
+            title="공사 불편사항 신고"
+            sub="소음·먼지·통행 등 민원"
+            href={NAVER_FORM_COMPLAINT}
+            tone="blue"
           />
         </div>
       </section>
