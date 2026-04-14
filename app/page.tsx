@@ -1,21 +1,36 @@
 import Image from "next/image";
 import Countdown from "./components/Countdown";
 import BeforeAfterSlider from "./components/BeforeAfterSlider";
+import { getContent } from "./lib/content-store";
 
 const SUPERVISOR_TEL = "02-721-0703";
-const MAIN_TEL = "02-721-0700";
+const MAIN_TEL = "02-721-0729";
 const ACRC_TEL = "1398";
 
 const NAVER_FORM_INTEGRITY = "https://naver.me/54KQ7DFY";
 const NAVER_FORM_COMPLAINT = "https://naver.me/xfbJEHWM";
 
-export default function Page() {
+function nl2br(text: string) {
+  return text.split("\n").map((line, i, arr) =>
+    i < arr.length - 1 ? (
+      <span key={i}>
+        {line}
+        <br />
+      </span>
+    ) : (
+      <span key={i}>{line}</span>
+    ),
+  );
+}
+
+export default async function Page() {
+  const c = await getContent();
+
   return (
     <>
       <main className="relative mx-auto w-full max-w-screen-sm overflow-hidden bg-white pb-28">
         {/* ═══════════════ HERO ═══════════════ */}
         <section className="relative overflow-hidden bg-[#0a0e1a] px-6 pt-16 pb-24 text-white noise">
-          {/* Aurora orbs */}
           <div
             aria-hidden
             className="absolute -top-32 -left-24 h-80 w-80 rounded-full bg-[#3182f6]/40 blur-[100px] animate-aurora"
@@ -31,7 +46,6 @@ export default function Page() {
             style={{ animationDelay: "-9s" }}
           />
 
-          {/* Grid pattern */}
           <div
             aria-hidden
             className="absolute inset-0 opacity-[0.07]"
@@ -45,33 +59,28 @@ export default function Page() {
           />
 
           <div className="relative animate-fade-up">
-            {/* 상단 라벨 */}
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 backdrop-blur-md">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full animate-pulse-dot rounded-full bg-emerald-400" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
               </span>
               <span className="text-[11px] font-bold tracking-wide text-white/90">
-                서울특별시교육청 종로도서관
+                {c.hero.org}
               </span>
             </div>
 
-            {/* 메가 타이틀 */}
             <h1 className="mt-6 text-[44px] font-black leading-[1.05] tracking-[-0.035em]">
               종로도서관
               <br />
               <span className="bg-gradient-to-r from-[#7dd3fc] via-[#a5b4fc] to-[#f0abfc] bg-clip-text text-transparent">
-                시설공사 안내
+                {c.hero.title}
               </span>
             </h1>
 
             <p className="mt-5 max-w-[24rem] text-[15px] leading-relaxed text-white/70">
-              더 나은 공간을 만들기 위한 변화의 과정을
-              <br />
-              모든 시민에게 투명하게 공개합니다.
+              {nl2br(c.hero.description)}
             </p>
 
-            {/* 메타 정보 */}
             <div className="mt-7 flex items-center gap-2.5 text-[11px]">
               <MetaTag>🏗️ 환경개선공사</MetaTag>
               <MetaTag>🤝 청렴서약</MetaTag>
@@ -88,7 +97,6 @@ export default function Page() {
         {/* ═══════════════ BENTO STATS ═══════════════ */}
         <section className="px-5 mt-6">
           <div className="grid grid-cols-6 gap-2.5">
-            {/* 계약금액 - 큰 카드 */}
             <BentoTile className="col-span-6 bg-gradient-to-br from-[#3182f6] to-[#1b64da] text-white p-5 overflow-hidden relative">
               <div
                 aria-hidden
@@ -100,36 +108,37 @@ export default function Page() {
                 </p>
                 <div className="mt-2 flex items-baseline gap-1">
                   <span className="text-[44px] font-black leading-none tracking-tight tnum">
-                    55,000,000
+                    {c.contract.amount}
                   </span>
-                  <span className="text-xl font-black">원</span>
+                  <span className="text-xl font-black">
+                    {c.contract.amountUnit}
+                  </span>
                 </div>
                 <p className="mt-1 text-[11px] font-semibold text-white/70">
-                  부가세 포함 · 여성기업 수의계약
+                  {c.contract.amountSub} · {c.contract.method}
                 </p>
               </div>
             </BentoTile>
 
-            {/* 공사기간 */}
             <BentoTile className="col-span-3 bg-[#f2f4f6] p-4">
               <p className="text-[10px] font-bold tracking-wider text-[#8b95a1]">
                 기간
               </p>
               <p className="mt-2 text-2xl font-black tnum text-[#191f28]">
-                34<span className="text-sm">일</span>
+                {c.contract.period}
+                <span className="text-sm">{c.contract.periodUnit}</span>
               </p>
               <p className="mt-1 text-[10px] font-semibold text-[#8b95a1]">
-                4/9 → 5/12
+                {c.contract.periodSub}
               </p>
             </BentoTile>
 
-            {/* 시공사 */}
             <BentoTile className="col-span-3 bg-[#f2f4f6] p-4">
               <p className="text-[10px] font-bold tracking-wider text-[#8b95a1]">
                 시공사
               </p>
               <p className="mt-2 text-base font-black leading-tight text-[#191f28]">
-                토브이앤씨㈜
+                {c.contract.contractor}
               </p>
               <p className="mt-1 text-[10px] font-semibold text-[#8b95a1]">
                 여성기업
@@ -140,19 +149,18 @@ export default function Page() {
 
         {/* ═══════════════ 청렴신고 (메인 CTA) ═══════════════ */}
         <section id="report" className="px-5 mt-12">
-          <SectionLabel color="#f04452">REPORT · 신고센터</SectionLabel>
+          <SectionLabel color="#f04452">REPORT · {c.cta.label}</SectionLabel>
           <h2 className="mt-2 text-[28px] font-black leading-[1.15] tracking-tight text-[#191f28]">
-            부정·불편을
+            {c.cta.title}
             <br />
-            <span className="text-[#f04452]">익명으로 신고</span>하세요
+            <span className="text-[#f04452]">{c.cta.highlight}</span>
+            {c.cta.titleSuffix}
           </h2>
           <p className="mt-3 text-[14px] leading-relaxed text-[#4e5968]">
-            금품·향응 요구, 부실시공, 안전 위반, 소음·먼지 민원 등<br />
-            어떤 제보도 비밀이 보장됩니다.
+            {nl2br(c.cta.description)}
           </p>
 
           <div className="mt-5 space-y-2.5">
-            {/* 청렴신고 - Primary */}
             <a
               href={NAVER_FORM_INTEGRITY}
               target="_blank"
@@ -180,7 +188,6 @@ export default function Page() {
               <ArrowCircle className="bg-white text-[#191f28]" />
             </a>
 
-            {/* 공사 불편신고 - Secondary */}
             <a
               href={NAVER_FORM_COMPLAINT}
               target="_blank"
@@ -205,7 +212,6 @@ export default function Page() {
             </a>
           </div>
 
-          {/* 빠른 전화 */}
           <div className="mt-3 grid grid-cols-2 gap-2.5">
             <QuickTel
               icon="📞"
@@ -222,11 +228,10 @@ export default function Page() {
           <BigNumber n="01" color="#3182f6" />
           <SectionLabel color="#3182f6">CONSTRUCTION 01</SectionLabel>
           <h2 className="mt-2 text-[28px] font-black leading-[1.15] tracking-tight text-[#191f28]">
-            후문 자동 개폐 시스템
+            {c.construction01.title}
           </h2>
           <p className="mt-3 text-[14px] leading-relaxed text-[#4e5968]">
-            기존 수동 철문을 <strong className="text-[#191f28]">자바라 자동문</strong>으로
-            교체합니다. 주차와 출입 편의가 크게 향상됩니다.
+            {nl2br(c.construction01.description)}
           </p>
 
           <div className="mt-5">
@@ -249,14 +254,12 @@ export default function Page() {
           <BigNumber n="02" color="#1bbf83" />
           <SectionLabel color="#1bbf83">CONSTRUCTION 02</SectionLabel>
           <h2 className="mt-2 text-[28px] font-black leading-[1.15] tracking-tight text-[#191f28]">
-            정원 서재 환경 개선
+            {c.construction02.title}
           </h2>
           <p className="mt-3 text-[14px] leading-relaxed text-[#4e5968]">
-            노후 시설물 정비, <strong className="text-[#191f28]">파고라·휴게공간</strong>{" "}
-            조성, 자동 관수시설을 설치합니다.
+            {nl2br(c.construction02.description)}
           </p>
 
-          {/* 정원 시안 - 비대칭 갤러리 */}
           <div className="mt-5 grid grid-cols-6 gap-2.5">
             <GardenTile n={1} className="col-span-4 aspect-[4/3]" priority />
             <GardenTile n={2} className="col-span-2 aspect-square" />
@@ -264,7 +267,7 @@ export default function Page() {
             <GardenTile n={4} className="col-span-4 aspect-[4/3]" />
           </div>
           <p className="mt-3 text-[11px] font-medium text-[#8b95a1]">
-            ※ 시공사 제공 참고 시안. 실제 시공 결과와 차이가 있을 수 있습니다.
+            {c.construction02.disclaimer}
           </p>
 
           <div className="mt-4 grid grid-cols-3 gap-2">
@@ -278,7 +281,7 @@ export default function Page() {
         <section className="px-5 mt-16">
           <SectionLabel color="#3182f6">CONTRACT DETAIL</SectionLabel>
           <h2 className="mt-2 text-[28px] font-black leading-[1.15] tracking-tight text-[#191f28]">
-            계약 정보 전체공개
+            {c.contract.sectionTitle}
           </h2>
 
           <div className="mt-5 overflow-hidden rounded-[24px] bg-gradient-to-br from-[#f8fafc] to-[#f2f4f6] p-6 ring-1 ring-[#e5e8eb]">
@@ -286,23 +289,21 @@ export default function Page() {
               계약명
             </p>
             <p className="mt-2 text-[15px] font-black leading-relaxed text-[#191f28]">
-              (환경개선공사) 종로도서관 후문 자동개폐시스템 구축 및 정원 서재
-              환경개선 공사
+              {c.contract.name}
             </p>
 
             <div className="my-5 h-px bg-gradient-to-r from-transparent via-[#e5e8eb] to-transparent" />
 
             <dl className="grid grid-cols-2 gap-y-4 gap-x-3">
-              <DetailField label="계약금액" value="55,000,000원" />
-              <DetailField label="VAT" value="포함" />
-              <DetailField label="계약기간" value="2026.04.09 ~ 05.12" full />
-              <DetailField label="시공사" value="토브이앤씨㈜" />
-              <DetailField label="계약방법" value="여성기업 수의계약" />
               <DetailField
-                label="발주기관"
-                value="종로도서관 행정지원과"
-                full
+                label="계약금액"
+                value={`${c.contract.amount}${c.contract.amountUnit}`}
               />
+              <DetailField label="VAT" value={c.contract.amountSub} />
+              <DetailField label="계약기간" value="2026.04.09 ~ 05.12" full />
+              <DetailField label="시공사" value={c.contract.contractor} />
+              <DetailField label="계약방법" value={c.contract.method} />
+              <DetailField label="발주기관" value={c.contract.issuer} full />
               <DetailField label="감독" value={SUPERVISOR_TEL} />
               <DetailField label="이메일" value="jnlib@sen.go.kr" />
             </dl>
@@ -313,10 +314,10 @@ export default function Page() {
         <section className="px-5 mt-16">
           <SectionLabel color="#191f28">CONTACT</SectionLabel>
           <h2 className="mt-2 text-[28px] font-black leading-[1.15] tracking-tight text-[#191f28]">
-            문의 · 신고 채널
+            {c.contact.sectionTitle}
           </h2>
           <p className="mt-3 text-[14px] leading-relaxed text-[#4e5968]">
-            전화·이메일·온라인 폼 모두 24시간 접수합니다.
+            {c.contact.sectionSub}
           </p>
 
           <div className="mt-5 space-y-2.5">
@@ -372,12 +373,8 @@ export default function Page() {
                 왜 이렇게 공개하나요?
               </h3>
               <p className="mt-2 text-[13px] leading-relaxed text-white/70">
-                서울시교육청{" "}
-                <strong className="text-white">
-                  「공사현장 청렴 가시화 및 청렴서약 체계 구축」
-                </strong>{" "}
-                지침에 따라, 공사 정보·관계자·진행 현황을 시민이 직접 확인할 수
-                있도록 전면 공개합니다.
+                {c.footer.policy}에 따라, 공사 정보·관계자·진행 현황을 시민이
+                직접 확인할 수 있도록 전면 공개합니다.
               </p>
             </div>
           </div>
@@ -386,15 +383,15 @@ export default function Page() {
         {/* ═══════════════ FOOTER ═══════════════ */}
         <footer className="mt-12 px-6 py-10 text-center">
           <div className="text-base font-black text-[#191f28]">
-            서울특별시교육청 종로도서관
+            {c.footer.org}
           </div>
           <div className="mt-2 text-[12px] leading-relaxed text-[#8b95a1]">
-            서울시 종로구 사직로9길 15-14
+            {c.footer.address}
             <br />
             대표 {MAIN_TEL} · jnlib@sen.go.kr
           </div>
           <div className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-[#f2f4f6] px-3 py-1.5 text-[10px] font-bold text-[#4e5968]">
-            <span>🔒</span> 청렴 가시화 지침 준수
+            <span>🔒</span> {c.footer.policy}
           </div>
         </footer>
       </main>
@@ -607,7 +604,7 @@ function ChannelCard({
       className="group flex items-center gap-3 rounded-3xl bg-white p-4 ring-1 ring-[#e5e8eb] transition active:scale-[0.98] hover:ring-[#cbd2d9]"
     >
       <span
-        className="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl text-2xl"
+        className="flex shrink-0 items-center justify-center rounded-2xl text-2xl"
         style={{
           backgroundColor: `${accent}12`,
           width: 52,
