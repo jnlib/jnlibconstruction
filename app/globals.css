@@ -11,11 +11,15 @@
 
 :root {
   --bg: #ffffff;
-  --surface: #f6f8fb;
-  --ink: #0a1628;
-  --ink-soft: #4a5568;
-  --brand: #0066ff;
-  --brand-soft: #e6f0ff;
+  --surface: #F7F8FA;
+  --ink: #191F28;
+  --ink-secondary: #6B7684;
+  --ink-tertiary: #ADB3BA;
+  --accent: #3182F6;
+  --accent-soft: #EBF3FE;
+  --danger: #F04452;
+  --danger-soft: #FEF0F1;
+  --border: #E5E8EB;
 }
 
 html,
@@ -29,7 +33,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  word-spacing: 0.02em;
+}
+
+/* 프리미엄 타이포그래피 */
+h1, h2, h3 {
+  letter-spacing: -0.03em;
+  word-break: keep-all;
 }
 
 body {
@@ -38,15 +49,15 @@ body {
 }
 
 @theme inline {
-  --color-brand: #0066ff;
-  --color-ink: #0a1628;
+  --color-accent: #3182F6;
+  --color-ink: #191F28;
 }
 
-/* 부드러운 등장 */
+/* ── 등장 애니메이션 ── */
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -55,10 +66,54 @@ body {
 }
 
 .animate-fade-up {
-  animation: fadeUp 0.7s ease-out both;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* 진행률 바 광택 */
+.animate-fade-up-delay {
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.15s;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.3s;
+}
+
+/* ── 그라데이션 메쉬 ── */
+@keyframes meshFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(15px, -15px) scale(1.08);
+  }
+  66% {
+    transform: translate(-10px, 10px) scale(0.95);
+  }
+}
+
+.animate-mesh {
+  animation: meshFloat 10s ease-in-out infinite;
+}
+
+/* ── 글로우 펄스 ── */
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.animate-glow {
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+/* ── 시머 ── */
 @keyframes shimmer {
   0% {
     transform: translateX(-100%);
@@ -72,40 +127,77 @@ body {
   animation: shimmer 2.5s ease-in-out infinite;
 }
 
-/* 그라데이션 메쉬 */
-@keyframes meshFloat {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(20px, -20px) scale(1.05);
-  }
-  66% {
-    transform: translate(-15px, 15px) scale(0.95);
-  }
-}
-
-.animate-mesh {
-  animation: meshFloat 12s ease-in-out infinite;
-}
-
-/* 둥둥 떠다니기 */
+/* ── 플로트 ── */
 @keyframes float {
   0%,
   100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
   }
 }
 
 .animate-float {
-  animation: float 3.5s ease-in-out infinite;
+  animation: float 4s ease-in-out infinite;
 }
 
-/* 스크롤 부드럽게 */
+/* ── 3D 카드 호버 ── */
+.card-3d {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.card-3d:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+}
+
+.card-3d:active {
+  transform: scale(0.98);
+}
+
+/* ── 글래스모피즘 ── */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.glass-dark {
+  background: rgba(25, 31, 40, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* ── 그래디언트 보더 ── */
+.gradient-border {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1.5px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #3182F6, #a855f7, #ec4899, #3182F6);
+  background-size: 300% 300%;
+  animation: gradientMove 6s ease infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+@keyframes gradientMove {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ── 스크롤 ── */
 html {
   scroll-behavior: smooth;
 }

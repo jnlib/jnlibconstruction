@@ -38,70 +38,88 @@ export default function Countdown() {
 
   const { days, hours, minutes, seconds, progress, status } = state;
 
-  const statusBadge = {
-    before: { text: "공사 준비 중", color: "bg-amber-400" },
-    ongoing: { text: "공사 진행 중", color: "bg-emerald-400" },
-    done: { text: "공사 완료", color: "bg-blue-400" },
+  const statusLabel = {
+    before: "공사 준비 중",
+    ongoing: "공사 진행 중",
+    done: "공사 완료",
+  }[status];
+
+  const dotColor = {
+    before: "bg-amber-400",
+    ongoing: "bg-emerald-400",
+    done: "bg-blue-400",
   }[status];
 
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0b3a82] via-[#1e6bd6] to-[#3b8bff] p-6 text-white shadow-[0_20px_60px_-15px_rgba(11,58,130,0.5)]">
-      {/* 배경 블롭 */}
-      <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/10 blur-3xl" />
-      <div className="absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-cyan-300/20 blur-3xl" />
+    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0f172a] via-[#1e3a5f] to-[#0b3a82] p-6 text-white shadow-[0_20px_60px_-15px_rgba(11,58,130,0.5)]">
+      {/* 3D 배경 오브 */}
+      <div
+        aria-hidden
+        className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-gradient-to-br from-blue-400/40 to-purple-500/30 blur-2xl animate-glow"
+      />
+      <div
+        aria-hidden
+        className="absolute -bottom-16 -left-8 h-48 w-48 rounded-full bg-gradient-to-tr from-cyan-400/30 to-blue-600/20 blur-2xl animate-glow"
+        style={{ animationDelay: "-2s" }}
+      />
+      <div
+        aria-hidden
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-32 w-32 rounded-full bg-white/5 blur-xl"
+      />
 
-      <div className="relative">
+      <div className="relative z-10">
+        {/* 상태 */}
         <div className="flex items-center gap-2">
           <span className="relative flex h-2.5 w-2.5">
             <span
-              className={`absolute inline-flex h-full w-full animate-ping rounded-full ${statusBadge.color} opacity-75`}
+              className={`absolute inline-flex h-full w-full animate-ping rounded-full ${dotColor} opacity-75`}
             />
             <span
-              className={`relative inline-flex h-2.5 w-2.5 rounded-full ${statusBadge.color}`}
+              className={`relative inline-flex h-2.5 w-2.5 rounded-full ${dotColor}`}
             />
           </span>
-          <span className="text-xs font-semibold tracking-wider text-blue-50">
-            LIVE · {statusBadge.text}
+          <span className="text-[12px] font-semibold tracking-wide text-blue-100/80">
+            LIVE · {statusLabel}
           </span>
         </div>
 
-        <p className="mt-3 text-sm text-blue-100">공사 종료까지</p>
+        <p className="mt-3 text-[13px] text-blue-200/70">공사 종료까지</p>
 
-        <div className="mt-2 flex items-end gap-3">
-          <div className="flex items-baseline">
-            <span
-              className="text-7xl font-black tabular-nums tracking-tight"
-              style={{ fontFeatureSettings: '"tnum"' }}
-            >
-              {mounted ? days : "—"}
-            </span>
-            <span className="ml-1 text-2xl font-bold text-blue-100">일</span>
-          </div>
+        {/* 큰 숫자 */}
+        <div className="mt-1 flex items-baseline">
+          <span
+            className="text-6xl font-black tabular-nums tracking-tighter bg-gradient-to-b from-white to-blue-200 bg-clip-text text-transparent"
+            style={{ fontFeatureSettings: '"tnum"' }}
+          >
+            {mounted ? days : "--"}
+          </span>
+          <span className="ml-1.5 text-xl font-bold text-blue-200/80">일</span>
         </div>
 
+        {/* 시간 칩 */}
         <div className="mt-4 grid grid-cols-3 gap-2">
           <TimeChip label="시간" value={mounted ? hours : 0} />
           <TimeChip label="분" value={mounted ? minutes : 0} />
           <TimeChip label="초" value={mounted ? seconds : 0} />
         </div>
 
-        {/* 프로그레스 바 */}
+        {/* 프로그레스 */}
         <div className="mt-5">
-          <div className="flex items-center justify-between text-xs">
-            <span className="font-medium text-blue-100">진행률</span>
-            <span className="font-bold tabular-nums">
+          <div className="flex items-center justify-between text-[12px]">
+            <span className="font-medium text-blue-200/60">진행률</span>
+            <span className="font-bold tabular-nums text-white">
               {progress.toFixed(1)}%
             </span>
           </div>
-          <div className="mt-1.5 h-2.5 w-full overflow-hidden rounded-full bg-white/15">
+          <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-white/10">
             <div
-              className="relative h-full rounded-full bg-gradient-to-r from-cyan-300 to-white transition-[width] duration-700 ease-out"
+              className="relative h-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 transition-[width] duration-700 ease-out"
               style={{ width: `${progress}%` }}
             >
-              <div className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+              <div className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-white/40 to-transparent" />
             </div>
           </div>
-          <div className="mt-2 flex justify-between text-[11px] text-blue-100">
+          <div className="mt-2 flex justify-between text-[11px] text-blue-200/50">
             <span>2026. 4. 9. 착공</span>
             <span>2026. 5. 12. 준공</span>
           </div>
@@ -113,14 +131,14 @@ export default function Countdown() {
 
 function TimeChip({ label, value }: { label: string; value: number }) {
   return (
-    <div className="rounded-xl bg-white/10 px-2 py-2 text-center backdrop-blur-sm ring-1 ring-white/20">
+    <div className="rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 px-2 py-2.5 text-center">
       <div
-        className="text-xl font-bold tabular-nums"
+        className="text-xl font-bold tabular-nums text-white"
         style={{ fontFeatureSettings: '"tnum"' }}
       >
         {String(value).padStart(2, "0")}
       </div>
-      <div className="text-[10px] font-medium text-blue-100">{label}</div>
+      <div className="text-[10px] font-medium text-blue-200/60">{label}</div>
     </div>
   );
 }
