@@ -106,11 +106,28 @@ export default function Page() {
               노후 시설물 정비, 파고라 및 휴게공간 조성, 자동 관수시설 설치.
             </p>
           </div>
-          <div className="px-4 py-8 text-center">
-            <p className="text-xs text-slate-500">
-              시공사 제공 시안 이미지 게시 예정
-            </p>
+          <div className="grid grid-cols-2 gap-px bg-slate-200">
+            {[1, 2, 3, 4].map((n) => (
+              <div
+                key={n}
+                className="relative aspect-[4/3] bg-slate-100"
+              >
+                <Image
+                  src={`/images/garden-${n}.jpg`}
+                  alt={`정원 서재 시안 ${n}`}
+                  fill
+                  sizes="(max-width: 640px) 50vw, 300px"
+                  className="object-cover"
+                />
+                <span className="absolute left-2 top-2 rounded-md bg-blue-600 px-2 py-0.5 text-[10px] font-bold tracking-wider text-white shadow">
+                  시안 {n}
+                </span>
+              </div>
+            ))}
           </div>
+          <p className="px-4 py-2 text-[11px] text-slate-500">
+            ※ 시공사 제공 참고 시안. 실제 시공 결과와 차이가 있을 수 있습니다.
+          </p>
         </article>
       </section>
 
