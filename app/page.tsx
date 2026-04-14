@@ -29,47 +29,47 @@ export default async function Page() {
   return (
     <main className="relative mx-auto w-full max-w-screen-sm overflow-hidden bg-white">
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0f172a] via-[#1e293b] to-[#0f172a] px-6 pt-14 pb-16 text-white">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#eef2ff] via-[#f0f4ff] to-[#e8f0fe] px-6 pt-14 pb-16">
         {/* 메쉬 그라데이션 오브 */}
         <div
           aria-hidden
-          className="absolute -top-20 -left-20 h-64 w-64 rounded-full bg-gradient-to-br from-blue-500/50 to-cyan-400/30 blur-3xl animate-mesh"
+          className="absolute -top-20 -left-20 h-64 w-64 rounded-full bg-gradient-to-br from-blue-300/40 to-cyan-200/30 blur-3xl animate-mesh"
         />
         <div
           aria-hidden
-          className="absolute top-10 -right-16 h-72 w-72 rounded-full bg-gradient-to-bl from-purple-500/40 to-blue-600/30 blur-3xl animate-mesh"
+          className="absolute top-10 -right-16 h-72 w-72 rounded-full bg-gradient-to-bl from-violet-300/30 to-blue-300/20 blur-3xl animate-mesh"
           style={{ animationDelay: "-3s" }}
         />
         <div
           aria-hidden
-          className="absolute bottom-0 left-1/3 h-56 w-56 rounded-full bg-gradient-to-tr from-indigo-500/30 to-pink-500/20 blur-3xl animate-mesh"
+          className="absolute bottom-0 left-1/3 h-56 w-56 rounded-full bg-gradient-to-tr from-indigo-300/20 to-pink-200/20 blur-3xl animate-mesh"
           style={{ animationDelay: "-7s" }}
         />
 
         {/* 격자 패턴 오버레이 */}
         <div
           aria-hidden
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.06]"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)",
+              "linear-gradient(rgba(49,130,246,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(49,130,246,.3) 1px, transparent 1px)",
             backgroundSize: "40px 40px",
           }}
         />
 
         <div className="relative z-10 animate-fade-up">
-          <div className="inline-flex items-center gap-2 rounded-full glass-dark border border-white/10 px-4 py-1.5 text-[11px] font-semibold text-blue-200/80">
-            <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-glow" />
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/70 backdrop-blur-md border border-[#3182F6]/15 px-4 py-1.5 text-[11px] font-semibold text-[#3182F6] shadow-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#3182F6] animate-glow" />
             {c.hero.org}
           </div>
 
           <h1 className="mt-6 text-[36px] font-black leading-[1.1] tracking-tight">
-            <span className="bg-gradient-to-r from-white via-blue-100 to-blue-200 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#191F28] via-[#1e3a5f] to-[#3182F6] bg-clip-text text-transparent">
               {c.hero.title}
             </span>
           </h1>
 
-          <p className="mt-5 text-[15px] leading-[1.8] text-blue-100/70">
+          <p className="mt-5 text-[15px] leading-[1.8] text-[#6B7684]">
             {nl2br(c.hero.description)}
           </p>
 
@@ -78,7 +78,7 @@ export default async function Page() {
             {["환경개선공사", "청렴서약", "정보공개"].map((tag) => (
               <span
                 key={tag}
-                className="rounded-full bg-white/[0.06] border border-white/10 px-3.5 py-1 text-[11px] font-semibold text-white/60 backdrop-blur-sm"
+                className="rounded-full bg-white/60 backdrop-blur-sm border border-[#3182F6]/10 px-3.5 py-1 text-[11px] font-semibold text-[#3182F6]/70 shadow-sm"
               >
                 {tag}
               </span>
@@ -86,9 +86,6 @@ export default async function Page() {
           </div>
         </div>
       </section>
-
-      {/* 히어로 → 컨텐츠 전환 */}
-      <div className="h-12 bg-gradient-to-b from-[#0f172a] to-white" />
 
       {/* ── LIVE COUNTDOWN ── */}
       <section className="px-5 pb-2 animate-fade-up-delay">

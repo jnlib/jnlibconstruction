@@ -64,7 +64,7 @@ export const defaultContent: SiteContent = {
     title: "후문 자동 개폐 시스템",
     description:
       "기존 수동 철문을 자바라 자동문으로 교체합니다.\n주차와 출입 편의가 크게 향상됩니다.",
-    imagePosition: "center 40%",
+    imagePosition: "center 60%",
   },
   construction02: {
     title: "정원 서재 환경 개선",
