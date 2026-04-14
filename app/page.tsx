@@ -241,12 +241,6 @@ export default async function Page() {
               alt="후문"
             />
           </div>
-
-          <div className="mt-3 grid grid-cols-3 gap-2">
-            <FeatureChip icon="🚗">주차 편의</FeatureChip>
-            <FeatureChip icon="🔐">자동 보안</FeatureChip>
-            <FeatureChip icon="♿">접근성</FeatureChip>
-          </div>
         </section>
 
         {/* ═══════════════ 공사 02: 정원 ═══════════════ */}
@@ -260,21 +254,15 @@ export default async function Page() {
             {nl2br(c.construction02.description)}
           </p>
 
-          <div className="mt-5 grid grid-cols-6 gap-2.5">
-            <GardenTile n={1} className="col-span-4 aspect-[4/3]" priority />
-            <GardenTile n={2} className="col-span-2 aspect-square" />
-            <GardenTile n={3} className="col-span-2 aspect-square" />
-            <GardenTile n={4} className="col-span-4 aspect-[4/3]" />
+          <div className="mt-5 grid grid-cols-2 gap-2.5">
+            <GardenTile n={1} label="진입계단 보수" priority />
+            <GardenTile n={2} label="앉음벽 설치" />
+            <GardenTile n={3} label="보행로 정비" />
+            <GardenTile n={4} label="출입구 화강석 담장 설치" />
           </div>
           <p className="mt-3 text-[11px] font-medium text-[#8b95a1]">
             {c.construction02.disclaimer}
           </p>
-
-          <div className="mt-4 grid grid-cols-3 gap-2">
-            <FeatureChip icon="🌳">파고라</FeatureChip>
-            <FeatureChip icon="💧">자동 관수</FeatureChip>
-            <FeatureChip icon="🪑">휴게공간</FeatureChip>
-          </div>
         </section>
 
         {/* ═══════════════ 계약명 디테일 ═══════════════ */}
@@ -335,28 +323,6 @@ export default async function Page() {
               tel={MAIN_TEL}
               accent="#4e5968"
             />
-            <ChannelCard
-              icon="🚨"
-              title="국민권익위원회"
-              sub="익명 부패·공익 신고"
-              tel={ACRC_TEL}
-              link="https://www.acrc.go.kr"
-              accent="#f04452"
-            />
-            <ChannelCard
-              icon="🛡️"
-              title="청렴신고 폼"
-              sub="익명 부패·비리 온라인 제보"
-              href={NAVER_FORM_INTEGRITY}
-              accent="#191f28"
-            />
-            <ChannelCard
-              icon="🚧"
-              title="공사 불편사항 신고"
-              sub="소음·먼지·통행 등"
-              href={NAVER_FORM_COMPLAINT}
-              accent="#3182f6"
-            />
           </div>
         </section>
 
@@ -389,9 +355,6 @@ export default async function Page() {
             {c.footer.address}
             <br />
             대표 {MAIN_TEL} · jnlib@sen.go.kr
-          </div>
-          <div className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-[#f2f4f6] px-3 py-1.5 text-[10px] font-bold text-[#4e5968]">
-            <span>🔒</span> {c.footer.policy}
           </div>
         </footer>
       </main>
@@ -499,29 +462,30 @@ function FeatureChip({
 
 function GardenTile({
   n,
-  className,
+  label,
   priority,
 }: {
   n: number;
-  className?: string;
+  label: string;
   priority?: boolean;
 }) {
   return (
-    <div
-      className={`group relative overflow-hidden rounded-2xl bg-[#f2f4f6] ring-1 ring-[#e5e8eb] ${className}`}
-    >
+    <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#f2f4f6] ring-1 ring-[#e5e8eb]">
       <Image
         src={`/images/garden-${n}.jpg`}
-        alt={`정원 시안 ${n}`}
+        alt={`시안 ${n} - ${label}`}
         fill
-        sizes="(max-width: 640px) 80vw, 400px"
+        sizes="(max-width: 640px) 50vw, 300px"
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         priority={priority}
       />
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-2.5">
-        <span className="text-[10px] font-black tracking-wider text-white">
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-2.5">
+        <div className="text-[9px] font-bold tracking-wider text-white/70">
           시안 0{n}
-        </span>
+        </div>
+        <div className="mt-0.5 text-[12px] font-black leading-tight text-white">
+          {label}
+        </div>
       </div>
     </div>
   );
