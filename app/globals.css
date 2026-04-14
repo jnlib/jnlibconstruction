@@ -1,13 +1,111 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.woff2")
+    format("woff2-variations");
+}
+
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fb;
+  --ink: #0a1628;
+  --ink-soft: #4a5568;
+  --brand: #0066ff;
+  --brand-soft: #e6f0ff;
+}
+
 html,
 body {
   font-family:
+    "Pretendard",
     -apple-system,
     BlinkMacSystemFont,
     "Apple SD Gothic Neo",
-    "Pretendard",
     "Malgun Gothic",
     sans-serif;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  letter-spacing: -0.01em;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+@theme inline {
+  --color-brand: #0066ff;
+  --color-ink: #0a1628;
+}
+
+/* 부드러운 등장 */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.7s ease-out both;
+}
+
+/* 진행률 바 광택 */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+/* 그라데이션 메쉬 */
+@keyframes meshFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(20px, -20px) scale(1.05);
+  }
+  66% {
+    transform: translate(-15px, 15px) scale(0.95);
+  }
+}
+
+.animate-mesh {
+  animation: meshFloat 12s ease-in-out infinite;
+}
+
+/* 둥둥 떠다니기 */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: float 3.5s ease-in-out infinite;
+}
+
+/* 스크롤 부드럽게 */
+html {
+  scroll-behavior: smooth;
 }
