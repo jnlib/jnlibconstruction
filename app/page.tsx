@@ -73,17 +73,6 @@ export default async function Page() {
             {nl2br(c.hero.description)}
           </p>
 
-          {/* 태그 */}
-          <div className="mt-6 flex flex-wrap gap-2">
-            {["환경개선공사", "청렴서약", "정보공개"].map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full bg-white/60 backdrop-blur-sm border border-[#3182F6]/10 px-3.5 py-1 text-[11px] font-semibold text-[#3182F6]/70 shadow-sm"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -212,7 +201,8 @@ export default async function Page() {
             beforeSrc="/images/before-gate.jpg"
             afterSrc="/images/after-gate.jpg"
             alt="후문"
-            objectPosition={c.construction01.imagePosition}
+            beforePosition="center 65%"
+            afterPosition="center 45%"
           />
         </div>
       </section>
@@ -262,71 +252,59 @@ export default async function Page() {
 
       {/* ── 계약 정보 ── */}
       <section className="px-5 mt-16">
-        <div className="flex items-center gap-3">
-          <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-[#191F28] to-[#374151] text-xs font-black text-white">
-            i
-          </span>
-          <h2 className="text-[20px] font-extrabold text-[#191F28]">
-            {c.contract.sectionTitle}
-          </h2>
-        </div>
+        <p className="text-[13px] font-semibold text-[#3182F6]">계약 정보</p>
+        <h2 className="mt-1 text-[20px] font-extrabold text-[#191F28]">
+          {c.contract.sectionTitle}
+        </h2>
 
-        <div className="mt-6 grid grid-cols-2 gap-3">
-          <div className="card-3d relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#EBF3FE] to-[#dbeafe] p-4 border border-blue-200/50">
-            <div
-              aria-hidden
-              className="absolute -right-4 -top-4 h-16 w-16 rounded-full bg-blue-300/30 blur-xl"
-            />
-            <p className="text-[11px] font-bold tracking-wider text-[#3182F6]">
-              계약금액
-            </p>
-            <div className="mt-2 flex items-baseline gap-1">
-              <span className="text-[22px] font-black tabular-nums text-[#191F28]">
-                {c.contract.amount}
-              </span>
-              <span className="text-sm font-bold text-[#191F28]">
-                {c.contract.amountUnit}
-              </span>
+        <div className="mt-5 rounded-2xl border border-[#E5E8EB] overflow-hidden">
+          {/* 상단 핵심 수치 */}
+          <div className="grid grid-cols-2 divide-x divide-[#E5E8EB]">
+            <div className="p-4">
+              <p className="text-[10px] font-semibold tracking-wider text-[#ADB3BA]">
+                계약금액
+              </p>
+              <div className="mt-1.5 flex items-baseline gap-0.5">
+                <span className="text-[20px] font-black tabular-nums text-[#191F28]">
+                  {c.contract.amount}
+                </span>
+                <span className="text-xs font-bold text-[#6B7684]">
+                  {c.contract.amountUnit}
+                </span>
+              </div>
+              <p className="mt-0.5 text-[10px] text-[#ADB3BA]">
+                {c.contract.amountSub}
+              </p>
             </div>
-            <p className="mt-1 text-[11px] text-[#6B7684]">
-              {c.contract.amountSub}
-            </p>
-          </div>
-          <div className="card-3d relative overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 p-4 border border-emerald-200/50">
-            <div
-              aria-hidden
-              className="absolute -right-4 -top-4 h-16 w-16 rounded-full bg-emerald-300/30 blur-xl"
-            />
-            <p className="text-[11px] font-bold tracking-wider text-emerald-600">
-              공사 기간
-            </p>
-            <div className="mt-2 flex items-baseline gap-1">
-              <span className="text-[22px] font-black tabular-nums text-[#191F28]">
-                {c.contract.period}
-              </span>
-              <span className="text-sm font-bold text-[#191F28]">
-                {c.contract.periodUnit}
-              </span>
+            <div className="p-4">
+              <p className="text-[10px] font-semibold tracking-wider text-[#ADB3BA]">
+                공사 기간
+              </p>
+              <div className="mt-1.5 flex items-baseline gap-0.5">
+                <span className="text-[20px] font-black tabular-nums text-[#191F28]">
+                  {c.contract.period}
+                </span>
+                <span className="text-xs font-bold text-[#6B7684]">
+                  {c.contract.periodUnit}
+                </span>
+              </div>
+              <p className="mt-0.5 text-[10px] text-[#ADB3BA]">
+                {c.contract.periodSub}
+              </p>
             </div>
-            <p className="mt-1 text-[11px] text-[#6B7684]">
-              {c.contract.periodSub}
-            </p>
           </div>
-        </div>
 
-        <div className="mt-3 overflow-hidden rounded-2xl bg-[#F7F8FA] border border-[#E5E8EB] p-5">
-          <p className="text-[11px] font-bold tracking-wider text-[#ADB3BA]">
-            계약명
-          </p>
-          <p className="mt-1.5 text-[14px] font-semibold leading-relaxed text-[#191F28]">
-            {c.contract.name}
-          </p>
-
-          <div className="mt-4 grid grid-cols-2 gap-4 border-t border-[#E5E8EB] pt-4">
-            <Field label="시공사" value={c.contract.contractor} />
-            <Field label="계약방법" value={c.contract.method} />
-            <Field label="발주" value={c.contract.issuer} />
-            <Field label="감독" value={SUPERVISOR_TEL} />
+          {/* 계약 상세 */}
+          <div className="border-t border-[#E5E8EB] bg-[#F7F8FA] p-4">
+            <p className="text-[13px] font-semibold leading-relaxed text-[#191F28]">
+              {c.contract.name}
+            </p>
+            <div className="mt-3 grid grid-cols-2 gap-3">
+              <Field label="시공사" value={c.contract.contractor} />
+              <Field label="계약방법" value={c.contract.method} />
+              <Field label="발주" value={c.contract.issuer} />
+              <Field label="감독" value={SUPERVISOR_TEL} />
+            </div>
           </div>
         </div>
       </section>

@@ -7,14 +7,16 @@ type Props = {
   beforeSrc: string;
   afterSrc: string;
   alt: string;
-  objectPosition?: string;
+  beforePosition?: string;
+  afterPosition?: string;
 };
 
 export default function BeforeAfterSlider({
   beforeSrc,
   afterSrc,
   alt,
-  objectPosition = "center 40%",
+  beforePosition = "center 60%",
+  afterPosition = "center 45%",
 }: Props) {
   const [pos, setPos] = useState(50);
   const ref = useRef<HTMLDivElement>(null);
@@ -58,7 +60,7 @@ export default function BeforeAfterSlider({
           fill
           sizes="(max-width: 640px) 100vw, 600px"
           className="object-cover"
-          style={{ objectPosition }}
+          style={{ objectPosition: afterPosition }}
           priority
         />
         <span className="absolute right-3 top-3 z-10 glass-dark rounded-lg px-3 py-1.5 text-[11px] font-bold tracking-wider text-white border border-white/10">
@@ -76,7 +78,7 @@ export default function BeforeAfterSlider({
             fill
             sizes="(max-width: 640px) 100vw, 600px"
             className="object-cover"
-            style={{ objectPosition }}
+            style={{ objectPosition: beforePosition }}
           />
           <span className="absolute left-3 top-3 glass-dark rounded-lg px-3 py-1.5 text-[11px] font-bold tracking-wider text-white border border-white/10">
             BEFORE
