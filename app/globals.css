@@ -33,7 +33,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  word-spacing: 0.02em;
+}
+
+/* 프리미엄 타이포그래피 */
+h1, h2, h3 {
+  letter-spacing: -0.03em;
+  word-break: keep-all;
 }
 
 body {

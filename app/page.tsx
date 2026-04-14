@@ -29,7 +29,7 @@ export default async function Page() {
   return (
     <main className="relative mx-auto w-full max-w-screen-sm overflow-hidden bg-white">
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0f172a] via-[#1e293b] to-[#0f172a] px-6 pt-14 pb-24 text-white">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#0f172a] via-[#1e293b] to-[#0f172a] px-6 pt-14 pb-16 text-white">
         {/* 메쉬 그라데이션 오브 */}
         <div
           aria-hidden
@@ -87,8 +87,11 @@ export default async function Page() {
         </div>
       </section>
 
-      {/* ── LIVE COUNTDOWN (hero 겹침) ── */}
-      <section className="relative -mt-14 px-5 animate-fade-up-delay">
+      {/* 히어로 → 컨텐츠 전환 */}
+      <div className="h-12 bg-gradient-to-b from-[#0f172a] to-white" />
+
+      {/* ── LIVE COUNTDOWN ── */}
+      <section className="px-5 pb-2 animate-fade-up-delay">
         <Countdown />
       </section>
 
@@ -352,27 +355,6 @@ export default async function Page() {
             title="종로도서관 행정지원과"
             sub="공사 관련 문의 · 민원"
             tel={SUPERVISOR_TEL}
-          />
-          <ChannelCard
-            title="종로도서관 대표"
-            sub="일반 문의"
-            tel={MAIN_TEL}
-          />
-          <ChannelCard
-            title="국민권익위원회"
-            sub="익명 부패 · 공익 신고"
-            tel={ACRC_TEL}
-            link="www.acrc.go.kr"
-          />
-          <ChannelCard
-            title="청렴신고 폼"
-            sub="익명 부패 · 비리 온라인 제보"
-            href={NAVER_FORM_INTEGRITY}
-          />
-          <ChannelCard
-            title="공사 불편사항 신고"
-            sub="소음 · 먼지 · 통행 등 민원"
-            href={NAVER_FORM_COMPLAINT}
           />
         </div>
       </section>
