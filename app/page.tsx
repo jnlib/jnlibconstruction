@@ -294,16 +294,22 @@ export default async function Page() {
             </div>
           </div>
 
-          {/* 계약 상세 */}
-          <div className="border-t border-[#E5E8EB] bg-[#F7F8FA] p-4">
-            <p className="text-[13px] font-semibold leading-relaxed text-[#191F28]">
+          {/* 공사내용 */}
+          <div className="border-t border-[#E5E8EB] bg-gradient-to-br from-[#0f172a] to-[#1e3a5f] p-4 text-white">
+            <p className="text-[10px] font-semibold tracking-wider text-blue-200/60">
+              공사내용
+            </p>
+            <p className="mt-1.5 text-[13px] font-semibold leading-relaxed text-white/90">
               {c.contract.name}
             </p>
-            <div className="mt-3 grid grid-cols-2 gap-3">
+          </div>
+
+          {/* 계약 상세 */}
+          <div className="border-t border-[#E5E8EB] bg-white p-4">
+            <div className="grid grid-cols-3 gap-3">
               <Field label="시공사" value={c.contract.contractor} />
               <Field label="계약방법" value={c.contract.method} />
-              <Field label="발주" value={c.contract.issuer} />
-              <Field label="감독" value={SUPERVISOR_TEL} />
+              <Field label="발주 (감독)" value={`${c.contract.issuer}`} />
             </div>
           </div>
         </div>
