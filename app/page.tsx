@@ -11,415 +11,573 @@ const NAVER_FORM_COMPLAINT = "https://naver.me/xfbJEHWM";
 
 export default function Page() {
   return (
-    <main className="relative mx-auto w-full max-w-screen-sm overflow-hidden bg-white">
-      {/* ============== HERO ============== */}
-      <section className="relative overflow-hidden bg-[#0a1628] px-6 pt-14 pb-20 text-white">
-        {/* 그라데이션 메쉬 */}
-        <div
-          aria-hidden
-          className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-blue-500/40 blur-3xl animate-mesh"
-        />
-        <div
-          aria-hidden
-          className="absolute top-20 -right-20 h-80 w-80 rounded-full bg-cyan-400/30 blur-3xl animate-mesh"
-          style={{ animationDelay: "-4s" }}
-        />
-        <div
-          aria-hidden
-          className="absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-indigo-500/30 blur-3xl animate-mesh"
-          style={{ animationDelay: "-8s" }}
-        />
-
-        <div className="relative animate-fade-up">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold backdrop-blur-md ring-1 ring-white/20">
-            <span className="text-base">🏛️</span>
-            서울특별시교육청 종로도서관
-          </div>
-
-          <h1 className="mt-5 text-[34px] font-black leading-[1.15] tracking-tight">
-            종로도서관
-            <br />
-            시설공사 안내
-          </h1>
-
-          <p className="mt-4 text-[15px] leading-relaxed text-blue-100/90">
-            더 나은 공간을 만들기 위한 변화의 과정을
-            <br />
-            투명하게 공개합니다.
-          </p>
-
-          <div className="mt-6 flex flex-wrap gap-2">
-            <Pill>🏗️ 환경개선공사</Pill>
-            <Pill>🤝 청렴서약</Pill>
-            <Pill>📢 정보공개</Pill>
-          </div>
-        </div>
-      </section>
-
-      {/* ============== LIVE COUNTDOWN (hero와 겹침) ============== */}
-      <section className="relative -mt-12 px-5">
-        <Countdown />
-      </section>
-
-      {/* ============== 청렴신고 CTA ============== */}
-      <section className="px-5 mt-8">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-rose-50 to-orange-50 p-6 ring-1 ring-rose-100">
+    <>
+      <main className="relative mx-auto w-full max-w-screen-sm overflow-hidden bg-white pb-28">
+        {/* ═══════════════ HERO ═══════════════ */}
+        <section className="relative overflow-hidden bg-[#0a0e1a] px-6 pt-16 pb-24 text-white noise">
+          {/* Aurora orbs */}
           <div
             aria-hidden
-            className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-rose-200/50 blur-2xl"
+            className="absolute -top-32 -left-24 h-80 w-80 rounded-full bg-[#3182f6]/40 blur-[100px] animate-aurora"
           />
-          <div className="relative">
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-rose-500/10 px-3 py-1 text-[11px] font-bold text-rose-600">
-              <span>🛡️</span> 청렴 신고센터
+          <div
+            aria-hidden
+            className="absolute top-10 -right-24 h-72 w-72 rounded-full bg-[#7c3aed]/35 blur-[100px] animate-aurora"
+            style={{ animationDelay: "-5s" }}
+          />
+          <div
+            aria-hidden
+            className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-[#06b6d4]/30 blur-[100px] animate-aurora"
+            style={{ animationDelay: "-9s" }}
+          />
+
+          {/* Grid pattern */}
+          <div
+            aria-hidden
+            className="absolute inset-0 opacity-[0.07]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
+              backgroundSize: "32px 32px",
+              maskImage:
+                "radial-gradient(ellipse at center top, black 30%, transparent 70%)",
+            }}
+          />
+
+          <div className="relative animate-fade-up">
+            {/* 상단 라벨 */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 backdrop-blur-md">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-pulse-dot rounded-full bg-emerald-400" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              </span>
+              <span className="text-[11px] font-bold tracking-wide text-white/90">
+                서울특별시교육청 종로도서관
+              </span>
             </div>
-            <h2 className="mt-3 text-2xl font-black leading-tight text-[#0a1628]">
-              부정·비리를
+
+            {/* 메가 타이틀 */}
+            <h1 className="mt-6 text-[44px] font-black leading-[1.05] tracking-[-0.035em]">
+              종로도서관
               <br />
-              <span className="text-rose-600">익명으로 신고</span>하세요
-            </h2>
-            <p className="mt-2 text-sm leading-relaxed text-slate-600">
-              금품·향응 요구, 부실시공, 안전 위반 등<br />
-              어떤 제보도 비밀이 보장됩니다.
+              <span className="bg-gradient-to-r from-[#7dd3fc] via-[#a5b4fc] to-[#f0abfc] bg-clip-text text-transparent">
+                시설공사 안내
+              </span>
+            </h1>
+
+            <p className="mt-5 max-w-[24rem] text-[15px] leading-relaxed text-white/70">
+              더 나은 공간을 만들기 위한 변화의 과정을
+              <br />
+              모든 시민에게 투명하게 공개합니다.
             </p>
 
-            <div className="mt-5 space-y-2">
-              <a
-                href={NAVER_FORM_INTEGRITY}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-between rounded-2xl bg-[#0a1628] px-5 py-4 text-white shadow-[0_10px_30px_-10px_rgba(10,22,40,0.5)] active:scale-[0.98] transition"
-              >
-                <div>
-                  <div className="text-[11px] font-medium text-slate-400">
-                    네이버 폼 (익명)
-                  </div>
-                  <div className="text-base font-bold">
-                    🛡️ 청렴신고 바로가기
-                  </div>
-                </div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20 group-active:translate-x-0.5 transition">
-                  <ArrowIcon />
-                </div>
-              </a>
-              <a
-                href={NAVER_FORM_COMPLAINT}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-between rounded-2xl bg-white px-5 py-4 text-[#0a1628] ring-1 ring-slate-200 active:scale-[0.98] transition"
-              >
-                <div>
-                  <div className="text-[11px] font-medium text-slate-500">
-                    네이버 폼
-                  </div>
-                  <div className="text-base font-bold">
-                    🚧 공사 불편사항 신고
-                  </div>
-                </div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 group-active:translate-x-0.5 transition">
-                  <ArrowIcon />
-                </div>
-              </a>
-            </div>
-
-            <div className="mt-3 grid grid-cols-2 gap-2">
-              <a
-                href={`tel:${SUPERVISOR_TEL}`}
-                className="flex items-center gap-2 rounded-xl bg-white px-3 py-3 ring-1 ring-slate-200 active:scale-95 transition"
-              >
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-base">
-                  📞
-                </span>
-                <div className="min-w-0">
-                  <div className="text-[10px] text-slate-500">감독관</div>
-                  <div className="truncate text-xs font-bold text-[#0a1628]">
-                    {SUPERVISOR_TEL}
-                  </div>
-                </div>
-              </a>
-              <a
-                href={`tel:${ACRC_TEL}`}
-                className="flex items-center gap-2 rounded-xl bg-white px-3 py-3 ring-1 ring-slate-200 active:scale-95 transition"
-              >
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-rose-50 text-base">
-                  🚨
-                </span>
-                <div className="min-w-0">
-                  <div className="text-[10px] text-slate-500">권익위</div>
-                  <div className="truncate text-xs font-bold text-[#0a1628]">
-                    ☎ {ACRC_TEL}
-                  </div>
-                </div>
-              </a>
+            {/* 메타 정보 */}
+            <div className="mt-7 flex items-center gap-2.5 text-[11px]">
+              <MetaTag>🏗️ 환경개선공사</MetaTag>
+              <MetaTag>🤝 청렴서약</MetaTag>
+              <MetaTag>📢 정보공개</MetaTag>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ============== 공사 1: 후문 자동문 ============== */}
-      <section className="px-5 mt-12">
-        <div className="flex items-center gap-2">
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 text-xs font-black text-white">
-            01
-          </span>
-          <span className="text-xs font-bold tracking-wider text-blue-600">
-            CONSTRUCTION
-          </span>
-        </div>
-        <h2 className="mt-2 text-2xl font-black leading-tight text-[#0a1628]">
-          후문 자동 개폐 시스템
-        </h2>
-        <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          기존 수동 철문을 자바라 자동문으로 교체합니다.
-          <br />
-          주차와 출입 편의가 크게 향상됩니다.
-        </p>
+        {/* ═══════════════ LIVE COUNTDOWN ═══════════════ */}
+        <section className="relative -mt-16 px-5 z-10">
+          <Countdown />
+        </section>
 
-        <div className="mt-5">
-          <BeforeAfterSlider
-            beforeSrc="/images/before-gate.jpg"
-            afterSrc="/images/after-gate.jpg"
-            alt="후문"
-          />
-        </div>
-      </section>
-
-      {/* ============== 공사 2: 정원 서재 ============== */}
-      <section className="px-5 mt-12">
-        <div className="flex items-center gap-2">
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-600 text-xs font-black text-white">
-            02
-          </span>
-          <span className="text-xs font-bold tracking-wider text-emerald-600">
-            CONSTRUCTION
-          </span>
-        </div>
-        <h2 className="mt-2 text-2xl font-black leading-tight text-[#0a1628]">
-          정원 서재 환경 개선
-        </h2>
-        <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          노후 시설물 정비, 파고라 및 휴게공간 조성,
-          <br />
-          자동 관수시설을 설치합니다.
-        </p>
-
-        <div className="mt-5 grid grid-cols-2 gap-3">
-          {[1, 2, 3, 4].map((n) => (
-            <div
-              key={n}
-              className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100 ring-1 ring-slate-200"
-            >
-              <Image
-                src={`/images/garden-${n}.jpg`}
-                alt={`정원 시안 ${n}`}
-                fill
-                sizes="(max-width: 640px) 50vw, 300px"
-                className="object-cover transition group-hover:scale-105"
+        {/* ═══════════════ BENTO STATS ═══════════════ */}
+        <section className="px-5 mt-6">
+          <div className="grid grid-cols-6 gap-2.5">
+            {/* 계약금액 - 큰 카드 */}
+            <BentoTile className="col-span-6 bg-gradient-to-br from-[#3182f6] to-[#1b64da] text-white p-5 overflow-hidden relative">
+              <div
+                aria-hidden
+                className="absolute -right-8 -bottom-8 h-40 w-40 rounded-full bg-white/10 blur-2xl"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-2">
-                <span className="text-[10px] font-bold tracking-wider text-white">
-                  시안 0{n}
-                </span>
+              <div className="relative">
+                <p className="text-[11px] font-bold tracking-wider text-white/70">
+                  CONTRACT AMOUNT · 계약금액
+                </p>
+                <div className="mt-2 flex items-baseline gap-1">
+                  <span className="text-[44px] font-black leading-none tracking-tight tnum">
+                    55,000,000
+                  </span>
+                  <span className="text-xl font-black">원</span>
+                </div>
+                <p className="mt-1 text-[11px] font-semibold text-white/70">
+                  부가세 포함 · 여성기업 수의계약
+                </p>
               </div>
-            </div>
-          ))}
-        </div>
-        <p className="mt-3 text-[11px] text-slate-400">
-          ※ 시공사 제공 참고 시안. 실제 시공 결과와 차이가 있을 수 있습니다.
-        </p>
-      </section>
+            </BentoTile>
 
-      {/* ============== 공사 정보 카드 ============== */}
-      <section className="px-5 mt-14">
-        <div className="text-center">
-          <p className="text-xs font-bold tracking-wider text-blue-600">
-            CONTRACT
-          </p>
-          <h2 className="mt-1 text-2xl font-black text-[#0a1628]">
-            계약 정보
-          </h2>
-        </div>
+            {/* 공사기간 */}
+            <BentoTile className="col-span-3 bg-[#f2f4f6] p-4">
+              <p className="text-[10px] font-bold tracking-wider text-[#8b95a1]">
+                기간
+              </p>
+              <p className="mt-2 text-2xl font-black tnum text-[#191f28]">
+                34<span className="text-sm">일</span>
+              </p>
+              <p className="mt-1 text-[10px] font-semibold text-[#8b95a1]">
+                4/9 → 5/12
+              </p>
+            </BentoTile>
 
-        {/* 큰 숫자 카드들 */}
-        <div className="mt-6 grid grid-cols-2 gap-3">
-          <StatCard
-            label="계약금액"
-            value="55,000,000"
-            unit="원"
-            sub="VAT 포함"
-            tone="blue"
-          />
-          <StatCard
-            label="공사 기간"
-            value="34"
-            unit="일"
-            sub="4/9 → 5/12"
-            tone="emerald"
-          />
-        </div>
-
-        <div className="mt-3 overflow-hidden rounded-2xl bg-[#f6f8fb] p-5 ring-1 ring-slate-100">
-          <p className="text-[11px] font-bold tracking-wider text-slate-400">
-            계약명
-          </p>
-          <p className="mt-1.5 text-sm font-semibold leading-relaxed text-[#0a1628]">
-            (환경개선공사) 종로도서관 후문 자동개폐시스템 구축 및 정원 서재
-            환경개선 공사
-          </p>
-
-          <div className="mt-4 grid grid-cols-2 gap-4 border-t border-slate-200 pt-4">
-            <Field label="시공사" value="토브이앤씨㈜" />
-            <Field label="계약방법" value="여성기업 수의계약" />
-            <Field label="발주" value="종로도서관 행정지원과" />
-            <Field label="감독" value={SUPERVISOR_TEL} />
+            {/* 시공사 */}
+            <BentoTile className="col-span-3 bg-[#f2f4f6] p-4">
+              <p className="text-[10px] font-bold tracking-wider text-[#8b95a1]">
+                시공사
+              </p>
+              <p className="mt-2 text-base font-black leading-tight text-[#191f28]">
+                토브이앤씨㈜
+              </p>
+              <p className="mt-1 text-[10px] font-semibold text-[#8b95a1]">
+                여성기업
+              </p>
+            </BentoTile>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ============== 관계자 / 채널 ============== */}
-      <section className="px-5 mt-14">
-        <div className="text-center">
-          <p className="text-xs font-bold tracking-wider text-blue-600">
-            CONTACT
+        {/* ═══════════════ 청렴신고 (메인 CTA) ═══════════════ */}
+        <section id="report" className="px-5 mt-12">
+          <SectionLabel color="#f04452">REPORT · 신고센터</SectionLabel>
+          <h2 className="mt-2 text-[28px] font-black leading-[1.15] tracking-tight text-[#191f28]">
+            부정·불편을
+            <br />
+            <span className="text-[#f04452]">익명으로 신고</span>하세요
+          </h2>
+          <p className="mt-3 text-[14px] leading-relaxed text-[#4e5968]">
+            금품·향응 요구, 부실시공, 안전 위반, 소음·먼지 민원 등<br />
+            어떤 제보도 비밀이 보장됩니다.
           </p>
-          <h2 className="mt-1 text-2xl font-black text-[#0a1628]">
+
+          <div className="mt-5 space-y-2.5">
+            {/* 청렴신고 - Primary */}
+            <a
+              href={NAVER_FORM_INTEGRITY}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex items-center gap-4 overflow-hidden rounded-3xl bg-[#191f28] p-5 text-white shadow-[0_24px_50px_-20px_rgba(25,31,40,0.5)] active:scale-[0.98] transition"
+            >
+              <div
+                aria-hidden
+                className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-[#f04452]/20 blur-2xl"
+              />
+              <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/15 backdrop-blur">
+                <ShieldIcon />
+              </div>
+              <div className="relative min-w-0 flex-1">
+                <div className="text-[10px] font-bold tracking-wider text-white/50">
+                  PRIORITY · 청렴신고
+                </div>
+                <div className="mt-0.5 text-[17px] font-black leading-tight">
+                  부패·비리 신고하기
+                </div>
+                <div className="text-[11px] font-semibold text-white/60">
+                  네이버폼 · 익명 보장
+                </div>
+              </div>
+              <ArrowCircle className="bg-white text-[#191f28]" />
+            </a>
+
+            {/* 공사 불편신고 - Secondary */}
+            <a
+              href={NAVER_FORM_COMPLAINT}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 rounded-3xl bg-white p-5 ring-1 ring-[#e5e8eb] active:scale-[0.98] transition hover:ring-[#3182f6]"
+            >
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#e8f3ff]">
+                <ConeIcon />
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="text-[10px] font-bold tracking-wider text-[#3182f6]">
+                  공사 민원
+                </div>
+                <div className="mt-0.5 text-[17px] font-black leading-tight text-[#191f28]">
+                  공사 불편사항 신고
+                </div>
+                <div className="text-[11px] font-semibold text-[#8b95a1]">
+                  소음·먼지·통행 등
+                </div>
+              </div>
+              <ArrowCircle className="bg-[#191f28] text-white" />
+            </a>
+          </div>
+
+          {/* 빠른 전화 */}
+          <div className="mt-3 grid grid-cols-2 gap-2.5">
+            <QuickTel
+              icon="📞"
+              label="감독관"
+              tel={SUPERVISOR_TEL}
+              tone="blue"
+            />
+            <QuickTel icon="🚨" label="권익위" tel={ACRC_TEL} tone="rose" />
+          </div>
+        </section>
+
+        {/* ═══════════════ 공사 01: 후문 ═══════════════ */}
+        <section className="px-5 mt-16">
+          <BigNumber n="01" color="#3182f6" />
+          <SectionLabel color="#3182f6">CONSTRUCTION 01</SectionLabel>
+          <h2 className="mt-2 text-[28px] font-black leading-[1.15] tracking-tight text-[#191f28]">
+            후문 자동 개폐 시스템
+          </h2>
+          <p className="mt-3 text-[14px] leading-relaxed text-[#4e5968]">
+            기존 수동 철문을 <strong className="text-[#191f28]">자바라 자동문</strong>으로
+            교체합니다. 주차와 출입 편의가 크게 향상됩니다.
+          </p>
+
+          <div className="mt-5">
+            <BeforeAfterSlider
+              beforeSrc="/images/before-gate.jpg"
+              afterSrc="/images/after-gate.jpg"
+              alt="후문"
+            />
+          </div>
+
+          <div className="mt-3 grid grid-cols-3 gap-2">
+            <FeatureChip icon="🚗">주차 편의</FeatureChip>
+            <FeatureChip icon="🔐">자동 보안</FeatureChip>
+            <FeatureChip icon="♿">접근성</FeatureChip>
+          </div>
+        </section>
+
+        {/* ═══════════════ 공사 02: 정원 ═══════════════ */}
+        <section className="px-5 mt-16">
+          <BigNumber n="02" color="#1bbf83" />
+          <SectionLabel color="#1bbf83">CONSTRUCTION 02</SectionLabel>
+          <h2 className="mt-2 text-[28px] font-black leading-[1.15] tracking-tight text-[#191f28]">
+            정원 서재 환경 개선
+          </h2>
+          <p className="mt-3 text-[14px] leading-relaxed text-[#4e5968]">
+            노후 시설물 정비, <strong className="text-[#191f28]">파고라·휴게공간</strong>{" "}
+            조성, 자동 관수시설을 설치합니다.
+          </p>
+
+          {/* 정원 시안 - 비대칭 갤러리 */}
+          <div className="mt-5 grid grid-cols-6 gap-2.5">
+            <GardenTile n={1} className="col-span-4 aspect-[4/3]" priority />
+            <GardenTile n={2} className="col-span-2 aspect-square" />
+            <GardenTile n={3} className="col-span-2 aspect-square" />
+            <GardenTile n={4} className="col-span-4 aspect-[4/3]" />
+          </div>
+          <p className="mt-3 text-[11px] font-medium text-[#8b95a1]">
+            ※ 시공사 제공 참고 시안. 실제 시공 결과와 차이가 있을 수 있습니다.
+          </p>
+
+          <div className="mt-4 grid grid-cols-3 gap-2">
+            <FeatureChip icon="🌳">파고라</FeatureChip>
+            <FeatureChip icon="💧">자동 관수</FeatureChip>
+            <FeatureChip icon="🪑">휴게공간</FeatureChip>
+          </div>
+        </section>
+
+        {/* ═══════════════ 계약명 디테일 ═══════════════ */}
+        <section className="px-5 mt-16">
+          <SectionLabel color="#3182f6">CONTRACT DETAIL</SectionLabel>
+          <h2 className="mt-2 text-[28px] font-black leading-[1.15] tracking-tight text-[#191f28]">
+            계약 정보 전체공개
+          </h2>
+
+          <div className="mt-5 overflow-hidden rounded-[24px] bg-gradient-to-br from-[#f8fafc] to-[#f2f4f6] p-6 ring-1 ring-[#e5e8eb]">
+            <p className="text-[10px] font-bold tracking-wider text-[#8b95a1]">
+              계약명
+            </p>
+            <p className="mt-2 text-[15px] font-black leading-relaxed text-[#191f28]">
+              (환경개선공사) 종로도서관 후문 자동개폐시스템 구축 및 정원 서재
+              환경개선 공사
+            </p>
+
+            <div className="my-5 h-px bg-gradient-to-r from-transparent via-[#e5e8eb] to-transparent" />
+
+            <dl className="grid grid-cols-2 gap-y-4 gap-x-3">
+              <DetailField label="계약금액" value="55,000,000원" />
+              <DetailField label="VAT" value="포함" />
+              <DetailField label="계약기간" value="2026.04.09 ~ 05.12" full />
+              <DetailField label="시공사" value="토브이앤씨㈜" />
+              <DetailField label="계약방법" value="여성기업 수의계약" />
+              <DetailField
+                label="발주기관"
+                value="종로도서관 행정지원과"
+                full
+              />
+              <DetailField label="감독" value={SUPERVISOR_TEL} />
+              <DetailField label="이메일" value="jnlib@sen.go.kr" />
+            </dl>
+          </div>
+        </section>
+
+        {/* ═══════════════ 신고·문의 채널 ═══════════════ */}
+        <section className="px-5 mt-16">
+          <SectionLabel color="#191f28">CONTACT</SectionLabel>
+          <h2 className="mt-2 text-[28px] font-black leading-[1.15] tracking-tight text-[#191f28]">
             문의 · 신고 채널
           </h2>
-          <p className="mt-2 text-sm text-slate-500">
-            언제든 연락주세요. 24시간 접수합니다.
+          <p className="mt-3 text-[14px] leading-relaxed text-[#4e5968]">
+            전화·이메일·온라인 폼 모두 24시간 접수합니다.
           </p>
-        </div>
 
-        <div className="mt-6 space-y-3">
-          <ChannelCard
-            icon="🏛️"
-            title="종로도서관 행정지원과"
-            sub="공사 관련 문의 · 민원"
-            tel={SUPERVISOR_TEL}
-            tone="blue"
-          />
-          <ChannelCard
-            icon="📞"
-            title="종로도서관 대표"
-            sub="일반 문의"
-            tel={MAIN_TEL}
-            tone="slate"
-          />
-          <ChannelCard
-            icon="🚨"
-            title="국민권익위원회"
-            sub="익명 부패·공익 신고"
-            tel={ACRC_TEL}
-            link="https://www.acrc.go.kr"
-            tone="rose"
-          />
-          <ChannelCard
-            icon="🛡️"
-            title="청렴신고 폼"
-            sub="익명 부패·비리 온라인 제보"
+          <div className="mt-5 space-y-2.5">
+            <ChannelCard
+              icon="🏛️"
+              title="종로도서관 행정지원과"
+              sub="공사 관련 문의·민원"
+              tel={SUPERVISOR_TEL}
+              accent="#3182f6"
+            />
+            <ChannelCard
+              icon="📞"
+              title="종로도서관 대표"
+              sub="일반 문의"
+              tel={MAIN_TEL}
+              accent="#4e5968"
+            />
+            <ChannelCard
+              icon="🚨"
+              title="국민권익위원회"
+              sub="익명 부패·공익 신고"
+              tel={ACRC_TEL}
+              link="https://www.acrc.go.kr"
+              accent="#f04452"
+            />
+            <ChannelCard
+              icon="🛡️"
+              title="청렴신고 폼"
+              sub="익명 부패·비리 온라인 제보"
+              href={NAVER_FORM_INTEGRITY}
+              accent="#191f28"
+            />
+            <ChannelCard
+              icon="🚧"
+              title="공사 불편사항 신고"
+              sub="소음·먼지·통행 등"
+              href={NAVER_FORM_COMPLAINT}
+              accent="#3182f6"
+            />
+          </div>
+        </section>
+
+        {/* ═══════════════ 트러스트 배너 ═══════════════ */}
+        <section className="px-5 mt-16">
+          <div className="relative overflow-hidden rounded-[28px] bg-[#0a0e1a] p-6 text-white noise">
+            <div
+              aria-hidden
+              className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#3182f6]/30 blur-3xl"
+            />
+            <div className="relative">
+              <div className="text-3xl">🤝</div>
+              <h3 className="mt-3 text-xl font-black leading-tight">
+                왜 이렇게 공개하나요?
+              </h3>
+              <p className="mt-2 text-[13px] leading-relaxed text-white/70">
+                서울시교육청{" "}
+                <strong className="text-white">
+                  「공사현장 청렴 가시화 및 청렴서약 체계 구축」
+                </strong>{" "}
+                지침에 따라, 공사 정보·관계자·진행 현황을 시민이 직접 확인할 수
+                있도록 전면 공개합니다.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════ FOOTER ═══════════════ */}
+        <footer className="mt-12 px-6 py-10 text-center">
+          <div className="text-base font-black text-[#191f28]">
+            서울특별시교육청 종로도서관
+          </div>
+          <div className="mt-2 text-[12px] leading-relaxed text-[#8b95a1]">
+            서울시 종로구 사직로9길 15-14
+            <br />
+            대표 {MAIN_TEL} · jnlib@sen.go.kr
+          </div>
+          <div className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-[#f2f4f6] px-3 py-1.5 text-[10px] font-bold text-[#4e5968]">
+            <span>🔒</span> 청렴 가시화 지침 준수
+          </div>
+        </footer>
+      </main>
+
+      {/* ═══════════════ 스티키 하단 CTA ═══════════════ */}
+      <div className="fixed inset-x-0 bottom-0 z-50 mx-auto w-full max-w-screen-sm safe-bottom">
+        <div className="mx-3 mb-3 flex gap-2 rounded-2xl border border-[#e5e8eb] bg-white/90 p-1.5 shadow-[0_20px_50px_-15px_rgba(25,31,40,0.25)] backdrop-blur-xl">
+          <a
             href={NAVER_FORM_INTEGRITY}
-            tone="dark"
-          />
-          <ChannelCard
-            icon="🚧"
-            title="공사 불편사항 신고"
-            sub="소음·먼지·통행 등 민원"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-[#191f28] py-3 text-[13px] font-black text-white active:scale-[0.97] transition"
+          >
+            🛡️ 청렴신고
+          </a>
+          <a
             href={NAVER_FORM_COMPLAINT}
-            tone="blue"
-          />
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-[#3182f6] py-3 text-[13px] font-black text-white active:scale-[0.97] transition"
+          >
+            🚧 불편신고
+          </a>
         </div>
-      </section>
-
-      {/* ============== 푸터 ============== */}
-      <footer className="mt-16 bg-[#0a1628] px-6 py-10 text-center text-xs text-slate-400">
-        <div className="text-base font-bold text-white">
-          서울특별시교육청 종로도서관
-        </div>
-        <div className="mt-2 leading-relaxed">
-          서울시 종로구 사직로9길 15-14
-          <br />
-          대표 {MAIN_TEL} · jnlib@sen.go.kr
-        </div>
-        <div className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1 text-[10px] ring-1 ring-white/10">
-          🤝 서울시교육청 청렴 가시화 지침에 따라 공개
-        </div>
-      </footer>
-    </main>
+      </div>
+    </>
   );
 }
 
-/* ============================================================
+/* ════════════════════════════════════════════
    서브 컴포넌트
-============================================================ */
+═══════════════════════════════════════════════ */
 
-function Pill({ children }: { children: React.ReactNode }) {
+function MetaTag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold backdrop-blur-md ring-1 ring-white/15">
+    <span className="inline-flex items-center gap-1 rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[11px] font-bold text-white/85 backdrop-blur-sm">
       {children}
     </span>
   );
 }
 
-function ArrowIcon() {
+function SectionLabel({
+  children,
+  color,
+}: {
+  children: React.ReactNode;
+  color: string;
+}) {
   return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <line x1="5" y1="12" x2="19" y2="12" />
-      <polyline points="12 5 19 12 12 19" />
-    </svg>
+    <div className="flex items-center gap-2">
+      <span
+        className="h-1 w-6 rounded-full"
+        style={{ backgroundColor: color }}
+      />
+      <span
+        className="text-[11px] font-black tracking-[0.15em]"
+        style={{ color }}
+      >
+        {children}
+      </span>
+    </div>
   );
 }
 
-function StatCard({
+function BigNumber({ n, color }: { n: string; color: string }) {
+  return (
+    <div
+      className="pointer-events-none mb-1 text-[110px] font-black leading-none tracking-tighter opacity-[0.06]"
+      style={{ color }}
+      aria-hidden
+    >
+      {n}
+    </div>
+  );
+}
+
+function BentoTile({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`rounded-[20px] ring-1 ring-[#e5e8eb] ${className}`}>
+      {children}
+    </div>
+  );
+}
+
+function FeatureChip({
+  icon,
+  children,
+}: {
+  icon: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex items-center justify-center gap-1.5 rounded-2xl bg-[#f2f4f6] px-2 py-2.5 text-[12px] font-bold text-[#4e5968]">
+      <span className="text-base">{icon}</span>
+      <span>{children}</span>
+    </div>
+  );
+}
+
+function GardenTile({
+  n,
+  className,
+  priority,
+}: {
+  n: number;
+  className?: string;
+  priority?: boolean;
+}) {
+  return (
+    <div
+      className={`group relative overflow-hidden rounded-2xl bg-[#f2f4f6] ring-1 ring-[#e5e8eb] ${className}`}
+    >
+      <Image
+        src={`/images/garden-${n}.jpg`}
+        alt={`정원 시안 ${n}`}
+        fill
+        sizes="(max-width: 640px) 80vw, 400px"
+        className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+        priority={priority}
+      />
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-2.5">
+        <span className="text-[10px] font-black tracking-wider text-white">
+          시안 0{n}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function DetailField({
   label,
   value,
-  unit,
-  sub,
-  tone,
+  full,
 }: {
   label: string;
   value: string;
-  unit: string;
-  sub: string;
-  tone: "blue" | "emerald";
+  full?: boolean;
 }) {
-  const toneMap = {
-    blue: "from-blue-50 to-blue-100/50 text-blue-600",
-    emerald: "from-emerald-50 to-emerald-100/50 text-emerald-600",
-  };
   return (
-    <div
-      className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${toneMap[tone]} p-4 ring-1 ring-slate-100`}
-    >
-      <p className="text-[11px] font-bold tracking-wider opacity-80">
+    <div className={full ? "col-span-2" : ""}>
+      <dt className="text-[10px] font-bold tracking-wider text-[#8b95a1]">
         {label}
-      </p>
-      <div className="mt-2 flex items-baseline gap-1">
-        <span className="text-2xl font-black tabular-nums text-[#0a1628]">
-          {value}
-        </span>
-        <span className="text-sm font-bold text-[#0a1628]">{unit}</span>
-      </div>
-      <p className="mt-1 text-[11px] text-slate-500">{sub}</p>
+      </dt>
+      <dd className="mt-1 text-[13px] font-black text-[#191f28]">{value}</dd>
     </div>
   );
 }
 
-function Field({ label, value }: { label: string; value: string }) {
+function QuickTel({
+  icon,
+  label,
+  tel,
+  tone,
+}: {
+  icon: string;
+  label: string;
+  tel: string;
+  tone: "blue" | "rose";
+}) {
+  const bg = tone === "blue" ? "bg-[#e8f3ff]" : "bg-[#ffeaec]";
   return (
-    <div>
-      <p className="text-[10px] font-bold tracking-wider text-slate-400">
-        {label}
-      </p>
-      <p className="mt-0.5 text-xs font-semibold text-[#0a1628]">{value}</p>
-    </div>
+    <a
+      href={`tel:${tel}`}
+      className="flex items-center gap-2.5 rounded-2xl bg-white p-3 ring-1 ring-[#e5e8eb] active:scale-[0.97] transition"
+    >
+      <span
+        className={`flex h-10 w-10 items-center justify-center rounded-xl ${bg} text-lg`}
+      >
+        {icon}
+      </span>
+      <div className="min-w-0">
+        <div className="text-[10px] font-bold text-[#8b95a1]">{label}</div>
+        <div className="truncate text-[13px] font-black text-[#191f28] tnum">
+          {tel}
+        </div>
+      </div>
+    </a>
   );
 }
 
@@ -430,7 +588,7 @@ function ChannelCard({
   tel,
   href,
   link,
-  tone,
+  accent,
 }: {
   icon: string;
   title: string;
@@ -438,47 +596,115 @@ function ChannelCard({
   tel?: string;
   href?: string;
   link?: string;
-  tone: "blue" | "slate" | "rose" | "dark";
+  accent: string;
 }) {
-  const toneMap = {
-    blue: "bg-blue-600 text-white",
-    slate: "bg-slate-700 text-white",
-    rose: "bg-rose-600 text-white",
-    dark: "bg-[#0a1628] text-white",
-  };
   const target = href ?? (tel ? `tel:${tel}` : "#");
   return (
     <a
       href={target}
       target={href ? "_blank" : undefined}
       rel={href ? "noopener noreferrer" : undefined}
-      className="group flex items-center gap-3 rounded-2xl bg-white p-4 ring-1 ring-slate-200 transition active:scale-[0.98] hover:ring-slate-300"
+      className="group flex items-center gap-3 rounded-3xl bg-white p-4 ring-1 ring-[#e5e8eb] transition active:scale-[0.98] hover:ring-[#cbd2d9]"
     >
-      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-2xl ring-1 ring-slate-100">
+      <span
+        className="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl text-2xl"
+        style={{
+          backgroundColor: `${accent}12`,
+          width: 52,
+          height: 52,
+        }}
+      >
         {icon}
       </span>
       <div className="min-w-0 flex-1">
-        <div className="text-[15px] font-bold text-[#0a1628]">{title}</div>
-        <div className="text-[11px] text-slate-500">{sub}</div>
+        <div className="text-[14px] font-black text-[#191f28]">{title}</div>
+        <div className="text-[11px] font-semibold text-[#8b95a1]">{sub}</div>
         {link && (
-          <div className="text-[11px] text-blue-600">
+          <div className="text-[11px] font-bold text-[#3182f6]">
             {link.replace("https://", "")}
           </div>
         )}
       </div>
       {tel ? (
         <span
-          className={`shrink-0 rounded-xl px-3 py-2 text-xs font-bold ${toneMap[tone]}`}
+          className="shrink-0 rounded-xl px-3 py-2 text-[11px] font-black text-white tnum"
+          style={{ backgroundColor: accent }}
         >
           ☎ {tel}
         </span>
       ) : (
-        <span
-          className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${toneMap[tone]} group-active:translate-x-0.5 transition`}
-        >
-          <ArrowIcon />
-        </span>
+        <ArrowCircle
+          className="text-white"
+          style={{ backgroundColor: accent }}
+        />
       )}
     </a>
+  );
+}
+
+function ArrowCircle({
+  className = "",
+  style,
+}: {
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <span
+      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition group-active:translate-x-0.5 ${className}`}
+      style={style}
+    >
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <line x1="5" y1="12" x2="19" y2="12" />
+        <polyline points="12 5 19 12 12 19" />
+      </svg>
+    </span>
+  );
+}
+
+function ShieldIcon() {
+  return (
+    <svg
+      width="26"
+      height="26"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      <path d="m9 12 2 2 4-4" />
+    </svg>
+  );
+}
+
+function ConeIcon() {
+  return (
+    <svg
+      width="26"
+      height="26"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#3182f6"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M2 18h20" />
+      <path d="m4.5 18 6-15h3l6 15" />
+      <path d="M6.5 14h11" />
+      <path d="M8 10h8" />
+    </svg>
   );
 }
